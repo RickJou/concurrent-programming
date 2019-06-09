@@ -7,11 +7,12 @@ import java.util.concurrent.atomic.AtomicLong;
  * 抽水机机房,此处存放所有不同平台的抽水机(线程池)
  */
 public class MachineRoom {
-    //不同的平台机房存放各自的抽水机
+    //不同平台的编解码线程池
     private static final ConcurrentHashMap<String,ThreadPoolExecutor> allMachineRooms = new ConcurrentHashMap<>();
+    //不同平台的Http连接池
 
     /**
-     * 获取对应平台的线程池
+     * 获取对应平台的编解码线程池
      * @param platformName
      * @return
      */

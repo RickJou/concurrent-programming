@@ -21,13 +21,17 @@ public class DaTangPumping extends PumpingController {
         CountDownLatch cdl = new CountDownLatch(count);
         //如果在并发执行下,某个线程出现了异常,则本次抽取任务失败
         AtomicBoolean hasException = new AtomicBoolean(false);
-        //获取对应平台的线程池
+        //获取对应平台的编解码线程池
         ThreadPoolExecutor executor = MachineRoom.getMachine(platformName);
+        //TODO 获得对应平台的Http线程池
+
         try {
             for (int i = 0; i < count; i++) {
                 executor.execute(() -> {
                     try {
-                        //TODO 执行业务
+                        //TODO 参数编码
+                        //TODO Http请求
+                        //TODO 结果解码
                         //TODO 将数据放置在WaterPoll中
                         cdl.countDown();
                         System.out.println("执行一次");
